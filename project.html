@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+
+*,*:after,*:before{
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+}
+body{
+	font-family: arial;
+	font-size: 16px;
+	margin: 0;
+	background: #fff;
+	color: #000;
+}
+
+.snow_wrap{
+	height: 100vh;
+	width: 100%;
+	background:url('../images/pic.jpg');
+	background-size: cover;
+	background-position: center bottom; 
+	overflow: hidden;
+	position: relative;
+}
+
+.snow, .snow:before, .snow:after {
+  position: absolute;
+  top: -650px;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-image: 
+  radial-gradient(4px 4px at 100px 50px, #fff , transparent), 
+  radial-gradient(6px 6px at 200px 150px, #fff, transparent), 
+  radial-gradient(3px 3px at 300px 250px, #fff 50%, transparent), 
+  radial-gradient(4px 4px at 400px 350px, #fff 50%, transparent), 
+  radial-gradient(6px 6px at 500px 100px, #fff 50%, transparent), 
+  radial-gradient(3px 3px at 50px 200px, #fff 50%, transparent), 
+  radial-gradient(4px 4px at 150px 300px, #fff 50%, transparent), 
+  radial-gradient(6px 6px at 250px 400px, #fff 50%, transparent), 
+  radial-gradient(3px 3px at 350px 500px, #fff 50%, transparent);
+  background-size: 650px 650px;
+  animation: snow 3s linear infinite;
+  content: "";
+}
+
+.snow:after {
+  margin-left: -250px;
+  opacity: 0.5;
+  filter: blur(2px);
+  animation-duration: 6s;
+  animation-direction: reverse;
+}
+
+.snow:before {
+	margin-left: -350px;
+  opacity: 0.7;
+  filter: blur(1px);
+  animation-duration: 9s;
+  animation-direction: reverse;
+}
+
+@keyframes snow {
+  to {
+    transform: translateY(650px);
+  }
+}
+
+
+body {
+  height: 100vh;
+  width: 100vw;
+  background-color: black;
+  margin: 0rem;
+  overflow: hidden;
+}
+
+#image-track {
+  display: flex;
+  gap: 4vmin;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(0%, -50%); 
+  user-select: none; /* -- Prevent image highlighting -- */
+}
+
+#image-track > .image {
+  width: 40vmin;
+  height: 56vmin;
+  object-fit: cover;
+  object-position: 100% center;
+}
+
+/* -- YouTube Link Styles -- */
+
+body.menu-toggled > .meta-link > span {
+  color: rgb(30, 30, 30);
+}
+
+#source-link {
+  bottom: 60px;
+}
+
+#source-link > i {
+  color: rgb(94, 106, 210);
+}
+
+#yt-link > i {
+  color: rgb(239, 83, 80);
+}
+
+.meta-link {
+  align-items: center;
+  backdrop-filter: blur(3px);
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  bottom: 10px;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
+  cursor: pointer;  
+  display: inline-flex;
+  gap: 5px;
+  left: 10px;
+  padding: 10px 20px;
+  position: fixed;
+  text-decoration: none;
+  transition: background-color 400ms, border-color 400ms;
+  z-index: 10000;
+}
+
+.meta-link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.meta-link > i, .meta-link > span {
+  height: 20px;
+  line-height: 20px;
+}
+
+.meta-link > span {
+  color: white;
+  font-family: "Rubik", sans-serif;
+  font-weight: 500;
+}
+
+h1 {
+ font-size: 3em;
+ text-align: center;
+ color: white;
+}
+
+p {
+ font-size: 1.5em;
+ text-align: center;
+ color: white;
+}
+
+button {
+margin-top: -1.5vh;
+margin-left: 44vw;
+font-family: 'Open Sans', sans-serif;
+color: #fff;
+text-align: center;
+font-size: 1em;
+background: #000;
+box-shadow: 1px 1px 50px 1px #fff;
+border: 0.5em solid #000; 
+border-radius: 1.2rem;
+transition: opacity .2s;
+}
+
+button:hover {
+cursor: pointer;
+background: #000;
+}
+
+</style>
+</head>
+<body>
+<h1>LOVE YOU BABY AND A HAPPY CHRISTMAS!</h1>
+<button>CLICK FOR A SURPRICE!</button>    
+<div class="snow_wrap">
+	<div class="snow"></div>
+</div>   
+    
+<div id="image-track" data-mouse-down-at="0" data-prev-percentage="0">
+  <img class="image" src="./photo1.jpg" draggable="false" />
+  <img class="image" src="./photo4.jpg" draggable="false" />
+  <img class="image" src="./photo3.jpg" draggable="false" />
+  <img class="image" src="./photo2.jpg" draggable="false" />
+  <img class="image" src="./photo5.jpg" draggable="false" />
+  <img class="image" src="./photo6.jpg" draggable="false" />
+  <img class="image" src="./photo7.jpg" draggable="false" />
+  <img class="image" src="./photo8.jpg" draggable="false" />
+</div> 
+
+
+<script>
+
+const track = document.getElementById("image-track");
+
+const handleOnDown = e => track.dataset.mouseDownAt = e.clientX;
+
+const handleOnUp = () => {
+  track.dataset.mouseDownAt = "0";  
+  track.dataset.prevPercentage = track.dataset.percentage;
+}
+
+const handleOnMove = e => {
+  if(track.dataset.mouseDownAt === "0") return;
+  
+  const mouseDelta = parseFloat(track.dataset.mouseDownAt) - e.clientX,
+        maxDelta = window.innerWidth / 2;
+  
+  const percentage = (mouseDelta / maxDelta) * -100,
+        nextPercentageUnconstrained = parseFloat(track.dataset.prevPercentage) + percentage,
+        nextPercentage = Math.max(Math.min(nextPercentageUnconstrained, 0), -100);
+  
+  track.dataset.percentage = nextPercentage;
+  
+  track.animate({
+    transform: `translate(${nextPercentage}%, -50%)`
+  }, { duration: 1200, fill: "forwards" });
+  
+  for(const image of track.getElementsByClassName("image")) {
+    image.animate({
+      objectPosition: `${100 + nextPercentage}% center`
+    }, { duration: 1200, fill: "forwards" });
+  }
+}
+
+/* -- Had to add extra lines for touch events -- */
+
+window.onmousedown = e => handleOnDown(e);
+
+window.ontouchstart = e => handleOnDown(e.touches[0]);
+
+window.onmouseup = e => handleOnUp(e);
+
+window.ontouchend = e => handleOnUp(e.touches[0]);
+
+window.onmousemove = e => handleOnMove(e);
+
+window.ontouchmove = e => handleOnMove(e.touches[0]);
+
+const audio = new Audio("./Cipri Popescu - Cel boier bogatu  (COLINDE ARDEAL).mp3");
+const buttons = document.querySelectorAll("button");
+
+buttons.forEach(button => {
+  button.addEventListener("click", () => {
+    audio.play();
+  });
+});
+
+</script>
+
+</body>
+</html>
